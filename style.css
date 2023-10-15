@@ -1,0 +1,337 @@
+/* Import Google font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+/* Global Reset and Typography */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Body Styles with Fade-in Animation */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #E3F2FD;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Main Container Styles with Hover Effect and Custom Animation */
+.wrapper {
+  width: 65vmin;
+  height: 70vmin;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  background: #2C3E50;
+  box-shadow: 0 20px 40px rgba(41, 64, 90, 0.2);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.wrapper:hover {
+  transform: scale(1.05);
+  animation: none; /* Disable animation on hover */
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Game Details Styles with Hover and Background Color Transition */
+.game-details {
+  color: #ECF0F1;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 20px 27px;
+  display: flex;
+  justify-content: space-between;
+  background: #34495E;
+  transition: background 0.3s ease;
+}
+
+ .game-details:hover {
+  background: #3E5866;
+  color: #fff;
+}  
+
+/* Play Board Styles with Hover Effect and Color Transition */
+ .play-board {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  background: #2C3E50;
+  grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+}
+
+.play-board .food {
+  background: #E74C3C;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: 50%;
+  position: relative;
+ }
+
+.play-board .food:hover {
+  background: #FF5E4D;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 94, 77, 0.7);
+}
+
+.play-board .food::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 5px rgba(255, 94, 77, 0.5);
+}
+
+.play-board .head {
+  background: #3498DB;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: 50%;
+  position: relative;
+}
+
+.play-board .head:hover {
+  background: #4AB3E1;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(74, 179, 225, 0.7);
+}
+
+.play-board .head::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 8px rgba(74, 179, 225, 0.5);
+} 
+
+/* Controls Styles with Slide-in Animation */
+.controls {
+  display: none;
+  justify-content: space-between;
+}
+
+.controls i {
+  padding: 25px 0;
+  text-align: center;
+  font-size: 1.3rem;
+  background-color: #333;
+  color: #ECF0F1;
+  width: calc(100% / 4);
+  cursor: pointer;
+  border-right: 1px solid #2C3E50;
+}
+
+/* Responsive Styles with Hover Effect */
+@media screen and (max-width: 800px) {
+  .wrapper {
+    width: 90vmin;
+    height: 115vmin;
+  }
+  .game-details {
+    font-size: 1.2rem;
+    padding: 15px 27px;
+  }
+  .controls {
+    display: flex;
+  }
+  .controls i {
+    padding: 15px 0;
+    font-size: 1.2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @font-face {
+    font-family: "game";
+    src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button:focus {
+    outline: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+    color: #333; 
+}
+
+body {
+    background-color: #222738;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333; 
+}
+
+canvas {
+    background-color: #181825;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#ui {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    flex-flow: column;
+    margin-left: 20px;
+}
+
+h2 {
+    font-weight: 300; 
+    transform: rotate(270deg);
+    margin-top: 20px; 
+    color: #6e7888; 
+}
+
+#score {
+    font-size: 36px; 
+    font-weight: 600; 
+    margin-top: 15px; 
+    color: #4cffd7;
+}
+
+.noselect {
+    user-select: none;
+}
+
+#replay {
+    font-size: 14px; 
+    padding: 12px 24px;
+    background: #4cffd7; 
+    border: none;
+    color: #222738;
+    border-radius: 30px; 
+    font-weight: 600; 
+    transform: rotate(270deg);
+    cursor: pointer;
+    transition: all 250ms ease-in-out; 
+}
+
+#replay:hover {
+    background: #a6aab5;
+    color: #222738;
+    transition: all 250ms ease-in-out;
+}
+
+#replay svg {
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    #replay {
+        margin-bottom: 20px;
+    }
+    #replay,
+    h2 {
+        transform: rotate(0deg);
+    }
+    #ui {
+        flex-flow: row wrap;
+        margin-bottom: 20px;
+    }
+    #score {
+        margin-top: 0;
+        margin-left: 20px;
+    }
+    .container {
+        flex-flow: column wrap;
+    }
+}
+
+#author {
+    width: 100%;
+    bottom: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #6e7888;
+    text-transform: uppercase;
+    padding-left: 35px;
+}
+
+#author span {
+    font-size: 12px; 
+    margin-left: 20px;
+    color: #4cffd7; 
+    letter-spacing: 4px;
+}
+
+#author h1 {
+    font-size: 28px; 
+    font-weight: 800; 
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+} */
+
+
+
+
+
+
